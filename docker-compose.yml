@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  webserver-apache2:
+    build: ./.docker
+    container_name: join_category_of_products
+    ports:
+      - "9998:80"
+    volumes:
+      - .:/var/www/html
+
