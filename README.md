@@ -1,3 +1,5 @@
+### Comando para iniciar a aplicação
+
 #### run build
 ```
 docker-compose up -d --build
@@ -5,7 +7,7 @@ docker-compose up -d --build
 
 #### install dependencies
 ```
-docker exec -it api_marketplace bash
+docker exec -it join_category_of_products bash
 composer install
 ```
 
@@ -13,13 +15,16 @@ composer install
 ```
 git config core.autocrlf false
 ```
-#### Gerar o arquivo .env baseado no exemplo:
-
-```console
-$ cp .env.example .env   para producao!
-```
 
 #### set a mode development
 ```
 composer development-enable
 ```
+
+### Collection de rotas no postman na raiz da aplicação
+````
+ Join_Registers.postman_collection.json
+````
+
+#### documentacao da api nesse [link](https://documenter.getpostman.com/view/7013209/TzCJfUnR)
+

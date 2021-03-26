@@ -8,7 +8,7 @@ use Registers\Entity\RegisterCategory;
 use Registers\Exception\RegisterCategoryDatabaseException;
 use Registers\Repository\RegisterCategoryRepositoryInterface;
 
-class UpdateRegisterCategoryService
+class UpdateRegisterCategoryService implements UpdateRegisterCategoryServiceInterface
 {
     /**
      * @var RegisterCategoryRepositoryInterface

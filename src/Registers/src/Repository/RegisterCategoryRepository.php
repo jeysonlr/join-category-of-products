@@ -58,6 +58,25 @@ class RegisterCategoryRepository extends EntityRepository implements RegisterCat
     }
 
     /**
+     * @param RegisterCategory $registerCategory
+     * @throws RegisterCategoryDatabaseException
+     */
+    public function delete(RegisterCategory $registerCategory): void
+    {
+        try {
+            $this->getEntityManager()->remove($registerCategory);
+            $this->getEntityManager()->flush();
+        } catch (Exception $e) {
+            throw new RegisterCategoryDatabaseException(
+                (new Config())
+                    ->setMessageError("Erro ao deletar a categoria!")
+                    ->setStatusCode(StatusHttp::INTERNAL_SERVER_ERROR)
+                    ->setTraceError($e->getMessage())
+            );
+        }
+    }
+
+    /**
      * @param int $categoryId
      * @return object|RegisterCategory|null
      * @throws RegisterCategoryDatabaseException

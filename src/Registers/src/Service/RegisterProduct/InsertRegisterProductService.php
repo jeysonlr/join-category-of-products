@@ -28,6 +28,6 @@ class InsertRegisterProductService implements InsertRegisterProductServiceInterf
      */
     public function insertProduct(RegisterProduct $registerProduct): RegisterProduct
     {
-        $this->registerProductRepository->insert($registerProduct);
+        return $this->registerProductRepository->insert($registerProduct);
     }
 }

@@ -39,3 +39,4 @@ class GetAllRegisterProductHandler implements RequestHandlerInterface
         );
     }
 }
+

@@ -21,7 +21,7 @@ class RegisterCategory implements ObjectCoreInterface
      * @var int
      * @Type("int")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\SequenceGenerator(sequenceName="join_test.join_categorias_produtos_seq", allocationSize=1, initialValue=1)
      * @ORM\Column(name="id_categoria_planejamento", type="integer", nullable=false)
      */
@@ -30,19 +30,11 @@ class RegisterCategory implements ObjectCoreInterface
     /**
      * @var string
      * @Type("string")
-     * @ORM\Column(name="nome_categoria", type="integer", nullable=false)
+     * @ORM\Column(name="nome_categoria", type="text", nullable=false)
      * @Assert\NotNull(message="O atributo nome_categoria é obrigatório")
+     * @Assert\NotBlank(message="O nome_categoria é obrigatório!")
      */
     protected string $nome_categoria;
-
-    /**
-     * @var RegisterProduct
-     *
-     * @Type("<Registers\Entity\RegisterProduct>")
-     *
-     * @ORM\OneToMany(targetEntity="RegisterProduct", mappedBy="categoria", cascade={"ALL"}, orphanRemoval=true)
-     */
-    protected RegisterProduct $produto;
 
     /**
      * @return int
@@ -74,21 +66,5 @@ class RegisterCategory implements ObjectCoreInterface
     public function setNomeCategoria(string $nome_categoria): void
     {
         $this->nome_categoria = $nome_categoria;
-    }
-
-    /**
-     * @return RegisterProduct
-     */
-    public function getProduct(): RegisterProduct
-    {
-        return $this->produto;
-    }
-
-    /**
-     * @param RegisterProduct $produto
-     */
-    public function setProduct(RegisterProduct $produto): void
-    {
-        $this->produto = $produto;
     }
 }

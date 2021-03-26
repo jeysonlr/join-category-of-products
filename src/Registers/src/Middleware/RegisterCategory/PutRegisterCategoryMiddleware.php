@@ -71,7 +71,7 @@ class PutRegisterCategoryMiddleware implements MiddlewareInterface
                     ->setMessageError("Categoria com o id {$categoryId} não existe")
             );
         }
-        $data->setIdCategoriaPlanejamento($categoryRegister->getIdCategoriaPlanejamento());
+        $data->setIdCategoriaPlanejamento($categoryId);
         $data->setNomeCategoria($data->getNomeCategoria());
 
         return $handler->handle($request->withAttribute('categoryPut', $data));

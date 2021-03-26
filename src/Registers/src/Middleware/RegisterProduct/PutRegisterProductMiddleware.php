@@ -47,11 +47,13 @@ class PutRegisterProductMiddleware implements MiddlewareInterface
     public function __construct(
         SerializerUtil $serializerUtil,
         ObjectValidationService $objectValidationService,
-        GetRegisterProductServiceInterface $getRegisterProductService
+        GetRegisterProductServiceInterface $getRegisterProductService,
+        GetRegisterCategoryServiceInterface $getRegisterCategoryService
     ) {
         $this->serializerUtil = $serializerUtil;
         $this->objectValidationService = $objectValidationService;
         $this->getRegisterProductService = $getRegisterProductService;
+        $this->getRegisterCategoryService = $getRegisterCategoryService;
     }
 
     /**
@@ -81,7 +83,7 @@ class PutRegisterProductMiddleware implements MiddlewareInterface
             );
         }
 
-        if ($this->getRegisterCategoryService->getCategoryById($data->getIdCategoriaPlanejamento())) {
+        if (!$this->getRegisterCategoryService->getCategoryById($data->getIdCategoriaPlanejamento())) {
             throw new RegisterNotExistsException(
                 (new Config())
                     ->setStatusCode(StatusHttp::BAD_REQUEST)
@@ -89,10 +91,10 @@ class PutRegisterProductMiddleware implements MiddlewareInterface
             );
         }
 
-        $data->setIdProduto($productRegister->getIdProduto());
-        $data->setIdCategoriaPlanejamento($productRegister->getIdCategoriaPlanejamento());
-        $data->setNomeProduto($productRegister->getNomeProduto());
-        $data->setValorProduto($productRegister->getValorProduto());
+        $data->setIdProduto($productId);
+        $data->setIdCategoriaPlanejamento($data->getIdCategoriaPlanejamento());
+        $data->setNomeProduto($data->getNomeProduto());
+        $data->setValorProduto($data->getValorProduto());
         $data->setDataCadastro(new DateTime());
 
         return $handler->handle($request->withAttribute('productPut', $data));

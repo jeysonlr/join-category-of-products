@@ -42,12 +42,8 @@ class ErrorHandlerMiddleware implements MiddlewareInterface
         } catch (ValueNotExistsOrNotFoundException $e) {
             return new JsonResponseCore($e->getCustomError(), $e->getCode());
         } catch (ExceptionCore $e) {
-            var_dump($e->getMessage());
-            exit;
             return new JsonResponseCore(ApiMessages::DEFAULTEXCEPTIONMESSAGE, StatusHttp::INTERNAL_SERVER_ERROR);
         } catch (Throwable $e) {
-            var_dump($e->getMessage());
-            exit;
             return new JsonResponseCore(ApiMessages::DEFAULTEXCEPTIONMESSAGE, StatusHttp::INTERNAL_SERVER_ERROR);
         }
     }

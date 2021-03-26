@@ -32,6 +32,16 @@ class GetRegisterProductService implements GetRegisterProductServiceInterface
     }
 
     /**
+     * @param int $categoryId
+     * @return array|null
+     * @throws RegisterProductDatabaseException
+     */
+    public function getProductByIdCategory(int $categoryId): ?array
+    {
+        return $this->registerProductRepository->findProductByIdCategory($categoryId);
+    }
+
+    /**
      * @return array|null
      * @throws RegisterProductDatabaseException
      */

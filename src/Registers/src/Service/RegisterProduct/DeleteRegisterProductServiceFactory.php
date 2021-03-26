@@ -8,14 +8,16 @@ use Doctrine\ORM\EntityManager;
 use Psr\Container\ContainerInterface;
 use Registers\Entity\RegisterProduct;
 
-class InsertRegisterProductServiceFactory
+class DeleteRegisterProductServiceFactory
 {
-    public function __invoke(ContainerInterface $container): InsertRegisterProductService
+    public function __invoke(ContainerInterface $container): DeleteRegisterProductService
     {
         $entityManager = $container->get(EntityManager::class);
         $registerRepository = $entityManager->getRepository(RegisterProduct::class);
-        return new InsertRegisterProductService(
-            $registerRepository
+        $getRegisterProductService = $container->get(GetRegisterProductService::class);
+        return new DeleteRegisterProductService(
+            $registerRepository,
+            $getRegisterProductService
         );
     }
 }

@@ -10,9 +10,9 @@ use Registers\Exception\RegisterProductDatabaseException;
 interface UpdateRegisterProductServiceInterface
 {
     /**
-     * @param RegisterProduct $registerCategory
+     * @param RegisterProduct $registerProduct
      * @return RegisterProduct
      * @throws RegisterProductDatabaseException
      */
-    public function updateProduct(RegisterProduct $registerCategory): RegisterProduct;
+    public function updateProduct(RegisterProduct $registerProduct): RegisterProduct;
 }

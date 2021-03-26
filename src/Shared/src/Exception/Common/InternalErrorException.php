@@ -10,3 +10,4 @@ abstract class InternalErrorException extends ExceptionCore
 {
 
 }
+

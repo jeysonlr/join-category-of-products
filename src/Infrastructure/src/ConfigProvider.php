@@ -11,9 +11,9 @@ use Infrastructure\Middleware\ErrorHandlerMiddleware;
 use Infrastructure\Middleware\ErrorHandlerMiddlewareFactory;
 use Infrastructure\Middleware\RequestLog\LogRequestMiddleware;
 use Infrastructure\Middleware\RequestLog\LogRequestMiddlewareFactory;
-use Infrastructure\Service\DatabaseSabium\SabiumDatabaseConnectionCheckService;
+use Infrastructure\Service\CheckDatabase\DatabaseConnectionCheckService;
 use Infrastructure\Middleware\ConnectionExternal\CheckConnectionsExternalMiddleware;
-use Infrastructure\Service\DatabaseSabium\SabiumDatabaseConnectionCheckServiceFactory;
+use Infrastructure\Service\CheckDatabase\DatabaseConnectionCheckServiceFactory;
 use Infrastructure\Middleware\ConnectionExternal\CheckConnectionsExternalMiddlewareFactory;
 
 /**
@@ -55,7 +55,7 @@ class ConfigProvider
                 ErrorHandlerMiddleware::class => ErrorHandlerMiddlewareFactory::class,
 
                 # Service
-                SabiumDatabaseConnectionCheckService::class => SabiumDatabaseConnectionCheckServiceFactory::class,
+                DatabaseConnectionCheckService::class => DatabaseConnectionCheckServiceFactory::class,
             ],
         ];
     }

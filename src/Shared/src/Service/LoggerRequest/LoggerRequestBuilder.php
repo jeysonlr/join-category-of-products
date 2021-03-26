@@ -11,7 +11,7 @@ class LoggerRequestBuilder
     /**
      * @var string|null
      */
-    private string
+    private ?string
         $uri,
         $method,
         $directory = "",
@@ -21,17 +21,17 @@ class LoggerRequestBuilder
     /**
      * @var array|null
      */
-    private array $header;
+    private ?array $header;
 
     /**
      * @var float|null
      */
-    private float $requestTime;
+    private ?float $requestTime;
 
     /**
      * @var int|null
      */
-    private int $responseStatus;
+    private ?int $responseStatus;
 
     /**
      * @return LoggerRequestService

@@ -34,7 +34,7 @@ class LoggerRequestService
     /**
      * @var string|null
      */
-    private string $uri, $header, $method, $directory, $bodyRequest, $bodyResponse, $logRequest, $logResponse, $fileName;
+    private ?string $uri, $header, $method, $directory, $bodyRequest, $bodyResponse, $logRequest, $logResponse, $fileName;
 
     /**
      * @var LineFormatter
@@ -44,12 +44,12 @@ class LoggerRequestService
     /**
      * @var float|null
      */
-    private float $requestTime;
+    private ?float $requestTime;
 
     /**
      * @var int|null
      */
-    private int $statusResponse;
+    private ?int $statusResponse;
 
     public function __construct(
         LoggerRequestDTO $loggerRequestDTO

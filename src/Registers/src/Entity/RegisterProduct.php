@@ -22,7 +22,7 @@ class RegisterProduct implements ObjectCoreInterface
      * @var int
      * @Type("int")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="NONE")
+     * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\SequenceGenerator(sequenceName="join_test.join_produtos_seq", allocationSize=1, initialValue=1)
      * @ORM\Column(name="id_produto", type="integer", nullable=false)
      */
@@ -33,22 +33,25 @@ class RegisterProduct implements ObjectCoreInterface
      * @Type("int")
      * @ORM\Column(name="id_categoria_planejamento", type="integer", nullable=false)
      * @Assert\NotNull(message="O atributo id_categoria_planejamento é obrigatório")
+     * @Assert\NotBlank(message="O id_categoria_planejamento é obrigatório!")
      */
     private int $id_categoria_planejamento;
 
     /**
      * @var string
      * @Type("string")
-     * @ORM\Column(name="nome_categoria", type="string", nullable=false)
+     * @ORM\Column(name="nome_produto", type="text", nullable=false)
      * @Assert\NotNull(message="O atributo nome_produto é obrigatório")
+     * @Assert\NotBlank(message="O nome_produto é obrigatório!")
      */
     private string $nome_produto;
 
     /**
      * @var float
      * @Type("float")
-     * @ORM\Column(name="valor_produto", type="float", nullable=false)
+     * @ORM\Column(name="valor_produto", type="decimal", nullable=false)
      * @Assert\NotNull(message="O atributo valor_produto é obrigatório")
+     * @Assert\NotBlank(message="O valor_produto é obrigatório!")
      */
     private float $valor_produto;
 
@@ -58,15 +61,6 @@ class RegisterProduct implements ObjectCoreInterface
      * @ORM\Column(name="data_cadastro", type="datetime", nullable=false)
      */
     private Datetime $data_cadastro;
-
-    /**
-     * @var RegisterCategory
-     * @Type("<Registers\Entity\RegisterProduct>")
-     *
-     * @ORM\ManyToOne(targetEntity="RegisterCategory", cascade={"ALL"})
-     * @ORM\JoinColumn(name="id_categoria_planejamento", referencedColumnName="id_categoria_planejamento")
-     */
-    private RegisterCategory $categoria;
 
     /**
      * @return int
@@ -146,21 +140,5 @@ class RegisterProduct implements ObjectCoreInterface
     public function setDataCadastro(DateTime $data_cadastro): void
     {
         $this->data_cadastro = $data_cadastro;
-    }
-
-    /**
-     * @return RegisterCategory
-     */
-    public function getCategoria(): RegisterCategory
-    {
-        return $this->categoria;
-    }
-
-    /**
-     * @param RegisterCategory $categoria
-     */
-    public function setCategoria(RegisterCategory $categoria): void
-    {
-        $this->categoria = $categoria;
     }
 }

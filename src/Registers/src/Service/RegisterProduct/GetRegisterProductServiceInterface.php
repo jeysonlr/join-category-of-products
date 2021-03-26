@@ -17,6 +17,12 @@ interface GetRegisterProductServiceInterface
     public function getProductById(int $productId): ?RegisterProduct;
 
     /**
+     * @param int $categoryId
+     * @return array|null
+     */
+    public function getProductByIdCategory(int $categoryId): ?array;
+
+    /**
      * @return array|null
      * @throws RegisterProductDatabaseException
      */

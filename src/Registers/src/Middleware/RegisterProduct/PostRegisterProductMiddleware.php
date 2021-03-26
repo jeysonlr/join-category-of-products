@@ -61,7 +61,7 @@ class PostRegisterProductMiddleware implements MiddlewareInterface
         $data = $this->deserialize($request->getBody()->getContents());
         $this->objectValidationService->validateEntity($data);
 
-        if ($this->getRegisterCategoryService->getCategoryById($data->getIdCategoriaPlanejamento())) {
+        if (!$this->getRegisterCategoryService->getCategoryById($data->getIdCategoriaPlanejamento())) {
             throw new RegisterNotExistsException(
                 (new Config())
                     ->setStatusCode(StatusHttp::BAD_REQUEST)

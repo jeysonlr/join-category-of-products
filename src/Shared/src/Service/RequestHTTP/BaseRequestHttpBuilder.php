@@ -16,14 +16,13 @@ use Shared\Util\BuilderRequest\Http\Header;
 use Shared\Service\LoggerRequest\LoggerRequestBuilder;
 use Shared\Exception\BuilderRequestException\HttpRequestException;
 use Shared\Exception\LoggerRequestException\LoggerRequestException;
-use Shared\Exception\BuilderRequestException\HttpRequestArrayException;
 
 class BaseRequestHttpBuilder
 {
     /**
-     * @var string
+     * @var string|null
      */
-    private string
+    private ?string
         $host = "",
         $method = "",
         $uri = "",
@@ -57,13 +56,12 @@ class BaseRequestHttpBuilder
     private int $statusCode, $timeOut = 0;
 
     /**
-     * @var float
+     * @var float|null
      */
-    private float $requestTime;
+    private ?float $requestTime;
 
     /**
      * @return ResponseInterface
-     * @throws HttpRequestArrayException
      * @throws HttpRequestException
      * @throws LoggerRequestException
      */

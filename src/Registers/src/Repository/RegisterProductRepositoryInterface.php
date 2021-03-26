@@ -26,11 +26,24 @@ interface RegisterProductRepositoryInterface
     public function update(RegisterProduct $registerProduct): RegisterProduct;
 
     /**
+     * @param RegisterProduct $registerProduct
+     * @throws RegisterProductDatabaseException
+     */
+    public function delete(RegisterProduct $registerProduct): void;
+
+    /**
      * @param int $productId
      * @return object|RegisterProduct|null
      * @throws RegisterProductDatabaseException
      */
     public function findProductById(int $productId): ?RegisterProduct;
+
+    /**
+     * @param int $categoryId
+     * @return array|null
+     * @throws RegisterProductDatabaseException
+     */
+    public function findProductByIdCategory(int $categoryId): ?array;
 
     /**
      * @return array|null

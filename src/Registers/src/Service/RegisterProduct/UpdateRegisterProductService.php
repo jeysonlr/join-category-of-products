@@ -22,12 +22,12 @@ class UpdateRegisterProductService implements UpdateRegisterProductServiceInterf
     }
 
     /**
-     * @param RegisterProduct $registerCategory
+     * @param RegisterProduct $registerProduct
      * @return RegisterProduct
      * @throws RegisterProductDatabaseException
      */
-    public function updateProduct(RegisterProduct $registerCategory): RegisterProduct
+    public function updateProduct(RegisterProduct $registerProduct): RegisterProduct
     {
-        return $this->registerProductRepository->update($registerCategory);
+        return $this->registerProductRepository->update($registerProduct);
     }
 }

@@ -32,7 +32,7 @@ class PostRegisterProductHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $response = $this->insertRegisterProductService->insertProduct($request->getAttribute('product'));
+        $response = $this->insertRegisterProductService->insertProduct($request->getAttribute('productPost'));
         return new JsonResponseCore($response, StatusHttp::CREATED);
     }
 }

@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "7ce273ea-ea72-43d3-a63d-d4916f6819c6",
+		"name": "Join_Registers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "Buscar todas categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/categorys",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"categorys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar categorias por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/categorys/1",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"categorys",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar nova categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome_categoria\": \"secos e molhados\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/categorys",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"categorys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza uma categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \r\n    \"nome_categoria\": \"higiene e limpeza\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/categorys/4",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"categorys",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produtos",
+			"item": [
+				{
+					"name": "Buscar todos produtos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/products",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar produto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/products/5",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"products",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar novo produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_categoria_planejamento\": 5,\r\n    \"nome_produto\": \"arroz\",\r\n    \"valor_produto\": 20.90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/products",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar um produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_categoria_planejamento\": 4,\r\n    \"nome_produto\": \"papel higienico 10 rolos\",\r\n    \"valor_produto\": 10.92\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/products/7",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apagar um produto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url_join_registers}}/v1/registers/products/7",
+							"host": [
+								"{{url_join_registers}}"
+							],
+							"path": [
+								"v1",
+								"registers",
+								"products",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

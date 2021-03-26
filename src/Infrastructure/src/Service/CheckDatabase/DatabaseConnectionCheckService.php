@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Infrastructure\Service\DatabaseSabium;
+namespace Infrastructure\Service\CheckDatabase;
 
 use Exception;
 use Http\StatusHttp;
@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManager;
 use Psr\Container\ContainerInterface;
 use Infrastructure\Exception\SabiumDatabaseConnectionException;
 
-class SabiumDatabaseConnectionCheckService implements SabiumDatabaseConnectionCheckServiceInterface
+class DatabaseConnectionCheckService implements DatabaseConnectionCheckServiceInterface
 {
     /**
      * @var ContainerInterface
@@ -26,7 +26,7 @@ class SabiumDatabaseConnectionCheckService implements SabiumDatabaseConnectionCh
     /**
      * @throws SabiumDatabaseConnectionException
      */
-    public function checkConnectionDatabaseSabium(): void
+    public function checkConnectionDatabase(): void
     {
         try {
             $this->container->get(EntityManager::class);

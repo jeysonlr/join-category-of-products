@@ -32,7 +32,6 @@ class GetAllRegisterCategoryHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        die('kkkk');
         $response = $this->getRegisterCategoryService->getAllCategorys();
         return new JsonResponseCore(
             $response,

@@ -13,7 +13,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Infrastructure\Util\Enum\ExternalServices;
 use Infrastructure\Exception\CheckConnectionExternalException;
-use Infrastructure\Service\DatabaseSabium\SabiumDatabaseConnectionCheckService;
+use Infrastructure\Service\CheckDatabase\DatabaseConnectionCheckService;
 
 class CheckConnectionsExternalMiddleware implements MiddlewareInterface
 {
@@ -23,13 +23,13 @@ class CheckConnectionsExternalMiddleware implements MiddlewareInterface
     private array $configRoutes;
 
     /**
-     * @var SabiumDatabaseConnectionCheckService
+     * @var DatabaseConnectionCheckService
      */
-    private SabiumDatabaseConnectionCheckService $checkConnectionDatabaseSabium;
+    private DatabaseConnectionCheckService $checkConnectionDatabaseSabium;
 
     public function __construct(
         array $configRoutes,
-        SabiumDatabaseConnectionCheckService $checkConnectionDatabaseSabium
+        DatabaseConnectionCheckService $checkConnectionDatabaseSabium
     ) {
         $this->configRoutes = $configRoutes;
         $this->checkConnectionDatabaseSabium = $checkConnectionDatabaseSabium;
@@ -52,7 +52,7 @@ class CheckConnectionsExternalMiddleware implements MiddlewareInterface
                 foreach ($this->configRoutes[$route] as $valueRoute) {
                     if ($valueRoute == ExternalServices::DATABASE) {
                         try {
-                            $this->checkConnectionDatabaseSabium->checkConnectionDatabaseSabium();
+                            $this->checkConnectionDatabaseSabium->checkConnectionDatabase();
                         } catch (Exception $e) {
                             array_push($errors, 'Sem conexao com banco de dados!');
                         }

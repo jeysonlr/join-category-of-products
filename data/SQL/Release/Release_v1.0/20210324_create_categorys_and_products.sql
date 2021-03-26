@@ -26,11 +26,11 @@ create sequence join_test.join_produtos_seq
 
 create table join_test.join_produtos(
     id_produto integer not null default nextval('join_test.join_produtos_seq'::text::regclass),
-    id_categoria_produto integer not null,
+    id_categoria_planejamento integer not null,
     nome_produto varchar not null,
     valor_produto float,
     data_cadastro date not null,
     constraint id_produto_pk primary key(id_produto),
-    constraint id_categoria_produto_fk foreign key (id_categoria_produto)
+    constraint id_categoria_planejamento_fk foreign key (id_categoria_planejamento)
         references join_test.join_categorias_produtos(id_categoria_planejamento)
 );

@@ -9,7 +9,6 @@ use Registers\Service\RegisterCategory\UpdateRegisterCategoryService;
 
 class PutRegisterCategoryHandlerFactory
 {
-
     public function __invoke(ContainerInterface $container): PutRegisterCategoryHandler
     {
         $insertRegisterCategoryService = $container->get(UpdateRegisterCategoryService::class);

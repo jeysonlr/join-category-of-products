@@ -26,6 +26,12 @@ interface RegisterCategoryRepositoryInterface
     public function update(RegisterCategory $registerCategory): RegisterCategory;
 
     /**
+     * @param RegisterCategory $registerCategory
+     * @throws RegisterCategoryDatabaseException
+     */
+    public function delete(RegisterCategory $registerCategory): void;
+
+    /**
      * @param int $categoryId
      * @return object|RegisterCategory|null
      * @throws RegisterCategoryDatabaseException

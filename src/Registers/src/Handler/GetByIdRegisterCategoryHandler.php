@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Registers\Handler;
 
-use ApiCore\Exception\Config;
 use Http\StatusHttp;
+use ApiCore\Exception\Config;
 use ApiCore\Response\JsonResponseCore;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

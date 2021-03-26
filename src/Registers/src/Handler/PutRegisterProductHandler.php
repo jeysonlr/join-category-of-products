@@ -32,7 +32,7 @@ class PutRegisterProductHandler implements RequestHandlerInterface
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $response = $this->updateRegisterProductService->updateProduct($request->getAttribute('product'));
+        $response = $this->updateRegisterProductService->updateProduct($request->getAttribute('productPut'));
         return new JsonResponseCore($response, StatusHttp::CREATED);
     }
 }

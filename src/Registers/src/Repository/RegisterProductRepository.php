@@ -58,6 +58,25 @@ class RegisterProductRepository extends EntityRepository implements RegisterProd
     }
 
     /**
+     * @param RegisterProduct $registerProduct
+     * @throws RegisterProductDatabaseException
+     */
+    public function delete(RegisterProduct $registerProduct): void
+    {
+        try {
+            $this->getEntityManager()->merge($registerProduct);
+            $this->getEntityManager()->flush();
+        } catch (Exception $e) {
+            throw new RegisterProductDatabaseException(
+                (new Config())
+                    ->setMessageError("Erro ao deletar produto!")
+                    ->setStatusCode(StatusHttp::INTERNAL_SERVER_ERROR)
+                    ->setTraceError($e->getMessage())
+            );
+        }
+    }
+
+    /**
      * @param int $productId
      * @return object|RegisterProduct|null
      * @throws RegisterProductDatabaseException
@@ -70,6 +89,25 @@ class RegisterProductRepository extends EntityRepository implements RegisterProd
             throw new RegisterProductDatabaseException(
                 (new Config())
                     ->setMessageError("Erro ao buscar produto por id!")
+                    ->setStatusCode(StatusHttp::INTERNAL_SERVER_ERROR)
+                    ->setTraceError($e->getMessage())
+            );
+        }
+    }
+
+    /**
+     * @param int $categoryId
+     * @return array|null
+     * @throws RegisterProductDatabaseException
+     */
+    public function findProductByIdCategory(int $categoryId): ?array
+    {
+        try {
+            return $this->findBy(['id_categoria_planejamento' => $categoryId]);
+        } catch (Exception $e) {
+            throw new RegisterProductDatabaseException(
+                (new Config())
+                    ->setMessageError("Erro ao buscar categoria de produto por id!")
                     ->setStatusCode(StatusHttp::INTERNAL_SERVER_ERROR)
                     ->setTraceError($e->getMessage())
             );

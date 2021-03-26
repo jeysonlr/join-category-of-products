@@ -28,6 +28,6 @@ class InsertRegisterCategoryService implements InsertRegisterCategoryServiceInte
      */
     public function insertCategory(RegisterCategory $registerCategory): RegisterCategory
     {
-        $this->registerCategoryRepository->insert($registerCategory);
+        return $this->registerCategoryRepository->insert($registerCategory);
     }
 }
